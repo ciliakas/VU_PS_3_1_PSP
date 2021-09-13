@@ -11,4 +11,9 @@ public class PhoneValidator
     {
         return true;
     }
+
+    public String convert(String phoneNumber, String fromPrefix, String toPrefix)
+    {
+        return phoneNumber;
+    }
 }

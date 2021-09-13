@@ -21,6 +21,7 @@ public class EmailValidatorTest
         Turi teisingą domeną ir TLD
     Notes:
         I assume that we're not going to check online if the domain actually exists, we only need to check if domain is syntactically correct
+        Domain rules taken from: https://tools.ietf.org/id/draft-liman-tld-names-00.html#rfc.section.2
      */
 
     EmailValidator emailValidator;
