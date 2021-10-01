@@ -28,10 +28,6 @@ public class EmailValidatorTest {
 		emailValidator = new EmailValidator();
 	}
 
-	@AfterEach
-	void tearDown() {
-	}
-
 	@Test
 	@DisplayName("Email with at sign, no forbidden symbols and valid domain and tld should be valid")
 	void email_with_at_symbol_no_forbidden_symbols_and_valid_domain_and_tld_should_be_valid() {

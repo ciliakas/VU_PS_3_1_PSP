@@ -22,10 +22,6 @@ public class PasswordCheckerTest {
 		passwordChecker = new PasswordChecker();
 	}
 
-	@AfterEach
-	void tearDown() {
-	}
-
 	@Test
 	@DisplayName("Password which is not shorter then required, with uppercase letters and no special symbol required should be valid")
 	void password_which_is_not_shorter_then_required_with_uppercase_letters_and_no_special_symbol_required_should_be_valid() {

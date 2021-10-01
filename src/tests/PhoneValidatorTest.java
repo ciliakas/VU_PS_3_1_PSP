@@ -29,10 +29,6 @@ public class PhoneValidatorTest {
 		phoneValidator = new PhoneValidator();
 	}
 
-	@AfterEach
-	void tearDown() {
-	}
-
 	@Test
 	@DisplayName("When phone number is valid should convert from original prefix to new prefix")
 	void when_phone_number_is_valid_should_convert_from_original_prefix_to_new_prefix() {
