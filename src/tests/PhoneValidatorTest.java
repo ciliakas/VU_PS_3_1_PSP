@@ -89,17 +89,4 @@ public class PhoneValidatorTest {
 	void phone_number_that_does_not_start_with_given_prefix_should_be_invalid(String phone) {
 		assertFalse(phoneValidator.validate(phone));
 	}
-
-	@Test
-	@DisplayName("Should throw error on validate when prefix is invalid")
-	void should_throw_error_on_validate_when_prefix_is_invalid(String prefix) {
-
-		Exception exception = assertThrows(IllegalArgumentException.class,
-				() -> phoneValidator.validate("-1234521306"));
-
-		String expectedMessage = "Prefix must contain only numeric characters or plus sign beforehand";
-		String actualMessage = exception.getMessage();
-
-		assertTrue(actualMessage.contains(expectedMessage));
-	}
 }
