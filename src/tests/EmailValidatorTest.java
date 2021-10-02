@@ -59,12 +59,6 @@ public class EmailValidatorTest {
 	}
 
 	@Test
-	@DisplayName("Domain label containing non ASCII letters should be invalid")
-	void domain_label_containing_non_ASCII_letters_should_be_invalid() {
-		assertFalse(emailValidator.validate("vardas@lietuviškai.lt"));
-	}
-
-	@Test
 	@DisplayName("Domain label containing symbols outside of (a-z, A-Z, 0–9, -) set should be invalid")
 	void domain_label_containing_symbols_outside_of_allowed_set_should_be_invalid() {
 		assertFalse(emailValidator.validate("vardas@weirdsite!.lt"));
