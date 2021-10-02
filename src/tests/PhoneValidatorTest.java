@@ -68,7 +68,7 @@ public class PhoneValidatorTest {
 	@Test
 	@DisplayName("Phone number that contains phone number contains letters should be invalid")
 	void phone_number_that_contains_phone_number_contains_letters_should_be_invalid() {
-		assertTrue(phoneValidator.validate("+3706abc4567"));
+		assertFalse(phoneValidator.validate("+3706abc4567"));
 	}
 
 	@Test
