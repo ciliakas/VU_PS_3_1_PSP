@@ -29,6 +29,7 @@ Test feedback - the tests were clear and easy to use, however they were not exte
 Syntax rules implemented:
 
 The local part can have these ASCII characters:
+
     * lowercase Latin letters: abcdefghijklmnopqrstuvwxyz,
     * uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ,
     * digits: 0123456789,
@@ -38,6 +39,7 @@ The local part can have these ASCII characters:
     * ~~comments: () (are allowed within parentheses, e.g. (comment)john.smith@example.com).~~
 
 Domain part:
+
     * lowercase Latin letters: abcdefghijklmnopqrstuvwxyz,
     * uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ,
     * digits: 0123456789,
