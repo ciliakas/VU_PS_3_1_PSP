@@ -42,8 +42,6 @@ Domain part:
 
     * lowercase Latin letters: abcdefghijklmnopqrstuvwxyz,
     * uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ,
-    * digits: 0123456789,
-    * hyphen: - (not first or last character),
     * ~~can contain IP address surrounded by square brackets: jsmith@[192.168.2.1] or jsmith@[IPv6:2001:db8::1].~~
     
 Also checking if TLD is valid using a master list of tlds.
