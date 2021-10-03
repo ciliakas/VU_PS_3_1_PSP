@@ -30,19 +30,22 @@ Syntax rules implemented:
 
 The local part can have these ASCII characters:
 
-    * lowercase Latin letters: abcdefghijklmnopqrstuvwxyz,
-    * uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ,
-    * digits: 0123456789,
-    * special characters: !#$%&'*+-/=?^_`{|}~,
-    * dot: . (not first or last character or repeated unless quoted),
-    * ~~space punctuations such as: "(),:;<>@[\] (with some restrictions),~~
-    * ~~comments: () (are allowed within parentheses, e.g. (comment)john.smith@example.com).~~
+* lowercase Latin letters: abcdefghijklmnopqrstuvwxyz
+* uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+* digits: 0123456789
+* special characters: !#$%&'*+-/=?^_`{|}~
+* dot: . (not first or last character or repeated unless quoted)
+* ~~space punctuations such as: "(),:;<>@[\] (with some restrictions)~~
+* ~~comments: () (are allowed within parentheses, e.g. (comment)john.smith@example.com)~~
 
 Domain part:
 
-    * lowercase Latin letters: abcdefghijklmnopqrstuvwxyz
-    * uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-    
+* lowercase Latin letters: abcdefghijklmnopqrstuvwxyz
+* uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+* digits: 0123456789
+* hyphen: - (not first or last character)
+* ~~can contain IP address surrounded by square brackets: jsmith@[192.168.2.1] or jsmith@[IPv6:2001:db8::1]~~
+
 Also checking if TLD is valid using a master list of tlds.
 
 
