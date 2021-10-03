@@ -40,8 +40,8 @@ The local part can have these ASCII characters:
 
 Domain part:
 
-    * lowercase Latin letters: abcdefghijklmnopqrstuvwxyz,
-    * uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ,
+    * lowercase Latin letters: abcdefghijklmnopqrstuvwxyz
+    * uppercase Latin letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ
     
 Also checking if TLD is valid using a master list of tlds.
 
