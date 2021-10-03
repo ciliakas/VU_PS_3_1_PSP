@@ -7,13 +7,7 @@ import java.util.stream.IntStream;
 
 class Utils {
     public static String[] splitEveryXPlaces(String string, int place) {
-        if (string == null) {
-            return null;
-        }
-        if (place < 1) {
-            return null;
-        }
-        if (string.isEmpty()) {
+        if (string == null || place < 1) {
             return null;
         }
         int length = string.length();
@@ -43,15 +37,21 @@ class Utils {
     }
 
     public static List<Integer> getIndexes(String string, char symbol) {
+        if (string == null) {
+            return new ArrayList<>();
+        }
         return IntStream
                 .iterate(string.indexOf(symbol), index -> index >= 0, index -> string.indexOf(symbol, index + 1))
                 .boxed()
                 .collect(Collectors.toList());
     }
 
-    public static boolean checkForNoTouchingIndexes(List<Integer> list) {
-        for (var i = 0; i < list.size() - 1; i++) {
-            if (list.get(i) + 1 == list.get(i + 1)) {
+    public static boolean checkForNoTouchingIndexes(List<Integer> sortedList) {
+        if(sortedList == null){
+            return true;
+        }
+        for (var i = 0; i < sortedList.size() - 1; i++) {
+            if (sortedList.get(i) + 1 == sortedList.get(i + 1)) {
                 return false;
             }
         }
@@ -59,8 +59,14 @@ class Utils {
     }
 
     public static boolean containsOnly(String string, String symbols) {
+        if(string == null || string.isEmpty()){
+            return true;
+        }
+        if(symbols == null || symbols.isEmpty()){
+            return false;
+        }
         for (var i = 0; i < string.length(); i++) {
-            if(!symbols.contains(Character.toString(string.charAt(i)))){
+            if (!symbols.contains(Character.toString(string.charAt(i)))) {
                 return false;
             }
         }

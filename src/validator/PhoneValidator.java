@@ -49,7 +49,9 @@ public class PhoneValidator {
             var hasPlus = phoneNumber.charAt(0) == '+';
             var splitString = Utils.splitEveryXPlaces(hasPlus ? phoneNumber.substring(1) : phoneNumber, MAX_PARSABLE_INT_LENGTH);
             for (var string : splitString) {
-                Integer.parseInt(string);
+                if(Integer.parseInt(string) < 0){
+                    return false;
+                }
             }
             return true;
         } catch (Exception e) {

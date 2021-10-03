@@ -5,6 +5,8 @@ class Rule {
     private final String prefix;
     private final int length;
 
+    //check if numbers follow plus
+
     public Rule(int prefix, int length) throws IllegalArgumentException {
         this.validate(prefix, length);
         this.prefix = Integer.toString(prefix);
@@ -53,7 +55,9 @@ class Rule {
             var hasPlus = prefix.charAt(0) == '+';
             var splitString = Utils.splitEveryXPlaces(hasPlus ? prefix.substring(1) : prefix, MAX_PARSABLE_INT_LENGTH);
             for (var string : splitString) {
-                Integer.parseInt(string);
+                if(Integer.parseInt(string) < 0){
+                    throw new IllegalArgumentException("Prefix must contain only numbers or a plus at the beginning");
+                }
             }
         } catch (Exception e) {
             throw new IllegalArgumentException("Prefix must contain only numbers or a plus at the beginning", e);

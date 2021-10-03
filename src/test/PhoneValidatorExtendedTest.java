@@ -18,11 +18,4 @@ class PhoneValidatorExtendedTest {
         phoneValidator.addValidation("+48", 9);
         assertTrue(phoneValidator.validate("+48501123456"));
     }
-
-    @Test
-    void checkAddValidation_OutOfPlacePlusPrefix() {
-        assertThrows(IllegalArgumentException.class, () ->
-                phoneValidator.addValidation("4+5", 10)
-        );
-    }
 }
