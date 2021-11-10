@@ -31,6 +31,15 @@ public class User {
         this.password = password;
     }
 
+    public void map(User user) {
+        this.setFirstName(user.getFirstName());
+        this.setLastName(user.getLastName());
+        this.setPhoneNumber(user.getPhoneNumber());
+        this.setEmail(user.getEmail());
+        this.setAddress(user.getAddress());
+        this.setPassword(user.getPassword());
+    }
+
     public Long getId() {
         return id;
     }

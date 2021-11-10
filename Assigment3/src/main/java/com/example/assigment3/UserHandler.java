@@ -1,24 +1,17 @@
 package com.example.assigment3;
 
-import org.hibernate.cfg.NotYetImplementedException;
-import org.springframework.beans.factory.annotation.Autowire;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.*;
-import validator.EmailValidator;
-import validator.PasswordChecker;
-import validator.PhoneValidator;
-
-import javax.annotation.Resource;
+import com.example.assigment3.wrappers.EmailValidator;
+import com.example.assigment3.wrappers.PasswordValidator;
+import com.example.assigment3.wrappers.PhoneValidator;
 import java.util.List;
 
 public class UserHandler {
-    private EmailValidator emailValidator;
-    private PhoneValidator phoneValidator;
-    private PasswordChecker passwordChecker;
+    private final EmailValidator emailValidator;
+    private final PhoneValidator phoneValidator;
+    private final PasswordValidator passwordChecker;
     private final UserRepository repository;
 
-    public UserHandler(EmailValidator emailValidator, PhoneValidator phoneValidator, PasswordChecker passwordChecker, UserRepository repository) {
+    public UserHandler(EmailValidator emailValidator, PhoneValidator phoneValidator, PasswordValidator passwordChecker, UserRepository repository) {
         this.emailValidator = emailValidator;
         this.phoneValidator = phoneValidator;
         this.passwordChecker = passwordChecker;
@@ -27,12 +20,11 @@ public class UserHandler {
 
     public List<User> all() {
         return repository.findAll();
-        //return repository.save(newUser);
     }
 
     public User newUser(User newUser) {
+        validateUser(newUser);
         return repository.save(newUser);
-        //return repository.save(newUser);
     }
 
     public User one(Long id) {
@@ -40,24 +32,35 @@ public class UserHandler {
     }
 
     public User replaceUser(User newUser, Long id) {
+        var userToEdit = repository.findById(id);
+        if(userToEdit.isEmpty()) {
+            throw new UserNotFoundException((id));
+        }
 
-        return repository.findById(id)
-                .map(user -> {
-                    user.setFirstName(newUser.getFirstName());
-                    user.setLastName(newUser.getLastName());
-                    user.setPhoneNumber(newUser.getPhoneNumber());
-                    user.setEmail(newUser.getEmail());
-                    user.setAddress(newUser.getAddress());
-                    user.setPassword(newUser.getPassword());
-                    return repository.save(user);
-                })
-                .orElseGet(() -> {
-                    newUser.setId(id);
-                    return repository.save(newUser);
-                });
+        validateUser(newUser);
+        var user = userToEdit.get();
+        user.map(newUser);
+        return repository.save(user);
     }
 
     public void deleteUser(Long id) {
-        repository.deleteById(id);
+        var user = repository.findById(id);
+        if(user.isEmpty()) {
+            throw new UserNotFoundException((id));
+        }
+
+        repository.delete(user.get());
+    }
+
+    private void validateUser(User user){
+        if(!emailValidator.validate(user.getEmail())){
+            throw new UserInvalidRequestException("Email '" + user.getEmail() + "' is invalid");
+        }
+        if(!phoneValidator.validate(user.getPhoneNumber())){
+            throw new UserInvalidRequestException("Phone number '" + user.getPhoneNumber() + "' is invalid");
+        }
+        if(!passwordChecker.validate(user.getPassword())){
+            throw new UserInvalidRequestException("Password is invalid. Password must contain at least 8 symbols, an uppercase and a lowercase letter, a number and a special symbol");
+        }
     }
 }
