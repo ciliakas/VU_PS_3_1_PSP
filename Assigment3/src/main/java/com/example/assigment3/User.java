@@ -31,6 +31,11 @@ public class User {
         this.password = password;
     }
 
+    public User(Long id, String firstName, String lastName, String phoneNumber, String email, String address, String password) {
+        this(firstName, lastName, phoneNumber, email, address, password);
+        this.id = id;
+    }
+
     public void map(User user) {
         this.setFirstName(user.getFirstName());
         this.setLastName(user.getLastName());
@@ -116,8 +121,14 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + this.id + ", firstName='" + this.firstName + '\'' + ", lastName='" + this.lastName + '\''
-                + ", phoneNumber='" + this.phoneNumber + '\'' + ", email='" + this.email + '\''
-                + ", address='" + this.address + '\'' + ", password='" + this.password + '\'';
+        return "{\"" + "id\":" + this.id + ",\"firstName\":\"" + this.firstName + '\"' + ",\"lastName\":\"" + this.lastName + '\"'
+                + ",\"phoneNumber\":\"" + this.phoneNumber + '\"' + ",\"email\":\"" + this.email + '\"'
+                + ",\"address\":\"" + this.address + '\"' + ",\"password\":\"" + this.password + "\"}";
+    }
+
+    public String toStringWithoutId() {
+        return "{\"firstName\":\"" + this.firstName + '\"' + ",\"lastName\":\"" + this.lastName + '\"'
+                + ",\"phoneNumber\":\"" + this.phoneNumber + '\"' + ",\"email\":\"" + this.email + '\"'
+                + ",\"address\":\"" + this.address + '\"' + ",\"password\":\"" + this.password + "\"}";
     }
 }
