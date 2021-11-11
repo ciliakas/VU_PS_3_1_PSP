@@ -163,7 +163,7 @@ class UserHandlerTest {
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
-    
+
     @Test
     void replaceUser() {
         var user = new User();
