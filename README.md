@@ -5,11 +5,17 @@ Author: Arnas Rimkus
 
 Group: 4 
 
-Test notes:
+---
 
-I'm more of a TS and C# developer, tried my best but my Java code might look weird or not match conventions.
+Library Use Part.
 
-Test naming convention used: https://enterprisecraftsmanship.com/posts/you-naming-tests-wrong/
+Used library implementation by: Deimantas Eidukevičius, 2 grupė
+
+I wasn't sure what kind of program exactly we were supposed to write, so I wrote a spring boot rest api.
+
+Wrote unit tests for the user controller and user handler, to make sure those parts worked as intended.
+
+Wrapped the library in used for easier replacement and to fix it's issues. Library implementation had some limitations - phone validator only works with phone numbers that start with a '+', also had fixed length so no way to validate non Lithuanian phone numbers without a lot of work. Email validator didn't properly validate the domains of emails - for example, this "email@." would pass a valid email address.
 
 ---
 
@@ -60,3 +66,13 @@ Also checking if TLD is valid using a master list of tlds.
 
 * Throws error if not provided with a non empty/not null list of special symbols to check for.
 * Throws error if length requirement is < 1
+
+---
+
+Test notes:
+
+I'm more of a TS and C# developer, tried my best but my Java code might look weird or not match conventions.
+
+Test naming convention used: https://enterprisecraftsmanship.com/posts/you-naming-tests-wrong/
+
+---
